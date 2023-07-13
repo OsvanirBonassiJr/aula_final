@@ -11,10 +11,12 @@ const router = express.Router();
 router.get('/', (req, res) => res.json({ message: 'funcionando'}));
 
 // GET /aplicardesconto
-router.get('/percentualSaopaulo/:percentual', (req, res) => {
+router.get('/aplicarpercentual/:valor/:percentual', (req, res) => {
+    const valor = parseInt(req.params.valor);
     const percentual = parseFloat(req.params.percentual);
-  
-    res.json({ percentualSaopaulo: percentual });
+    const resultado = valor * percentual;
+    
+    res.json({ aplicarPercentual: resultado });
 })
 
 app.use('/', router)
